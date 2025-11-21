@@ -1,0 +1,40 @@
+{
+    "2024-03-14": {
+        "type": "Buy",
+        "price": "128.54",
+        "units": "2",
+        "exchangeRate": "1.0945"
+    },
+    "2024-07-05": {
+        "type": "Buy",
+        "price": "172.38",
+        "units": "1",
+        "exchangeRate": "1.0938"
+    },
+    "2024-11-07": {
+        "type": "Buy",
+        "price": "164.92",
+        "units": "1",
+        "exchangeRate": "1.0848"
+    },
+    "2025-01-21": {
+        "type": "Buy",
+        "price": "190.94",
+        "units": "1",
+        "exchangeRate": "1.0356"
+    },
+        "2025-02-18": {
+        "type": "Buy",
+        "price": "178.02",
+        "units": "1",
+        "exchangeRate": "1.0289"
+    },
+    "2025-11-17": {
+        "type": "Sell",
+        "price": "250",
+        "units": "5",
+        "exchangeRate": "1.0567"
+    }
+}
+
+
