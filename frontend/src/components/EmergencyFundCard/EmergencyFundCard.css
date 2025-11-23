@@ -1,0 +1,58 @@
+.emergencyFundCard {
+    border: 1px solid #456882;
+    border-radius: 8px;
+    padding: 1rem;
+    flex: 1;
+    min-width: 250px;
+    margin: 0.5rem;
+    text-align: left;
+    background-color: #234C6A;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.emergencyFundCard h3 {
+    margin-top: 0;
+    color: #D2C1B6;
+}
+
+.emergencyFundCard .amountInfo {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    color: #D2C1B6;
+}
+
+.emergencyFundCard .progressBar {
+    height: 20px;
+    width: 100%;
+    background-color: #1B3C53;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #456882;
+}
+
+.emergencyFundCard .progressBarFill {
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D2C1B6;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.emergencyFundCard .progressBarFill.goalMet {
+    background-color: #4caf50;
+}
+
+.emergencyFundCard .progressBarFill.notMet {
+    background-color: #456882;
+}
+
+.emergencyFundCard .goalMessage {
+    color: #4caf50;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
