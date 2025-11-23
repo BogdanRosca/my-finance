@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import TotalWealthChart from './TotalWealthChart';
+import InvestmentChart from './InvestmentChart';
 import './TotalWealth.css';
 
 
 function TotalWealth({ lastMonth, historicData }) {
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [isExpandedTotal, setIsExpandedTotal] = useState(false);
+    const [isExpandedInvestment, setIsExpandedInvestment] = useState(false);
     
     const startOfYear = historicData[1]
     const totalStartOfYear = startOfYear.kutxa_cash + startOfYear.revolut + startOfYear.kutxa_etf + startOfYear.degiro + startOfYear.crypto;
@@ -26,7 +28,7 @@ function TotalWealth({ lastMonth, historicData }) {
                     <h3>Wealth Overview</h3>
                 </div>
                 <div className="cash-card-content">
-                    <div className="cash-total"  onClick={() => setIsExpanded(true)}>
+                    <div className="cash-total"  onClick={() => setIsExpandedTotal(true)}>
                         <div className="total-main">
                             <p className="total-label">Total wealth</p>
                             <p className="total-value">€{totalWealth.toLocaleString()}</p>
@@ -45,14 +47,15 @@ function TotalWealth({ lastMonth, historicData }) {
                             <p className="breakdown-label">Cash</p>
                             <p className="breakdown-value">€{totalCash.toLocaleString()}</p>
                         </div>
-                        <div className="breakdown-item revolut">
+                        <div className="breakdown-item revolut" onClick={() => setIsExpandedInvestment(true)}>
                             <p className="breakdown-label">Investment</p>
                             <p className="breakdown-value">€{totalInvestment.toLocaleString()}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <TotalWealthChart data={historicData} isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+            <TotalWealthChart data={historicData} isExpandedTotal={isExpandedTotal} setIsExpandedTotal={setIsExpandedTotal} />
+            <InvestmentChart data={historicData} isExpandedInvestment={isExpandedInvestment} setIsExpandedInvestment={setIsExpandedInvestment} />
         </>
     );
 }

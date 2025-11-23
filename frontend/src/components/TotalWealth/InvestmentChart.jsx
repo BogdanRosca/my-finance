@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
     LineChart,
     Line,
@@ -10,20 +9,21 @@ import {
 } from 'recharts';
 import './TotalWealth.css';
 
-function TotalWealthChart({ data, isExpandedTotal, setIsExpandedTotal }) {
+function InvestmentChart({ data, isExpandedInvestment, setIsExpandedInvestment }) {
     // Prepare cash chart data
     const cashChartData = data
         .sort((a, b) => new Date(a.date) - new Date(b.date))
         .map(item => {
             const date = new Date(item.date);
-            const invested = item.kutxa_etf + item.degiro + item.revolut + item.crypto
-            const total = item.kutxa_cash + invested
+            const total = item.revolut + item.degiro + item.kutxa_etf + item.crypto;
             const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             return {
                 date: `${monthNames[date.getMonth()]} ${date.getFullYear()}`,
-                cash: item.kutxa_cash || 0,
-                invested: invested || 0,
+                revolut: item.revolut || 0,
+                degiro: item.degiro || 0,
+                kutxa: item.kutxa_etf || 0,
+                crypto: item.crypto || 0,
                 total: total || 0
             };
         });
@@ -34,8 +34,10 @@ function TotalWealthChart({ data, isExpandedTotal, setIsExpandedTotal }) {
             return (
                 <div className="cash-tooltip">
                     <p className="tooltip-date">{data.date}</p>
-                    <p className="tooltip-label">Total Cash: <span className="cash-value">€{data.cash.toLocaleString()}</span></p>
-                    <p className="tooltip-label">Total Invested: <span className="investment-value">€{data.invested.toLocaleString()}</span></p>
+                    <p className="tooltip-label">Revolut: <span className="revolut-value">€{data.revolut.toLocaleString()}</span></p>
+                    <p className="tooltip-label">Kutxa: <span className="kutxa-value">€{data.kutxa.toLocaleString()}</span></p>
+                    <p className="tooltip-label">Degiro: <span className="degiro-value">€{data.degiro.toLocaleString()}</span></p>
+                    <p className="tooltip-label">Crypto: <span className="crypto-value">€{data.crypto.toLocaleString()}</span></p>
                     <p className="tooltip-total">Total: €{data.total.toLocaleString()}</p>
                 </div>
             );
@@ -45,12 +47,12 @@ function TotalWealthChart({ data, isExpandedTotal, setIsExpandedTotal }) {
 
     return (
         <>
-            {isExpandedTotal && (
-                <div className="cash-modal-overlay" onClick={() => setIsExpandedTotal(false)}>
+            {isExpandedInvestment && (
+                <div className="cash-modal-overlay" onClick={() => setIsExpandedInvestment(false)}>
                     <div className="cash-modal" onClick={(e) => e.stopPropagation()}>
                         <div className="cash-modal-header">
                             <h2>Total wealth history</h2>
-                            <button className="cash-close-btn" onClick={() => setIsExpandedTotal(false)}>×</button>
+                            <button className="cash-close-btn" onClick={() => setIsExpandedInvestment(false)}>×</button>
                         </div>
                         <div className="cash-modal-body">
                             <ResponsiveContainer width="100%" height={450}>
@@ -72,28 +74,46 @@ function TotalWealthChart({ data, isExpandedTotal, setIsExpandedTotal }) {
                                     <Tooltip content={<CustomTooltip />} />
                                     <Line
                                         type="monotone"
-                                        dataKey="cash"
+                                        dataKey="revolut"
                                         stroke="#56a84fff"
                                         strokeWidth={1}
-                                        dot={{ fill: '#56a84fff', r: 3 }}
+                                        dot={{ fill: '#56a84fff', r: 2 }}
                                         activeDot={{ r: 6 }}
-                                        name="Cash"
+                                        name="Revolut"
                                     />
                                     <Line
                                         type="monotone"
-                                        dataKey="invested"
-                                        stroke="#fbbf24"
+                                        dataKey="kutxa"
+                                        stroke="#c02b2bff"
                                         strokeWidth={1}
-                                        dot={{ fill: '#fbbf24', r: 3 }}
+                                        dot={{ fill: '#c02b2bff', r: 2 }}
                                         activeDot={{ r: 6 }}
-                                        name="Invested"
+                                        name="Kutxa"
+                                    />
+                                    <Line
+                                        type="monotone"
+                                        dataKey="degiro"
+                                        stroke="#42d5f6ff"
+                                        strokeWidth={1.5}
+                                        dot={{ fill: '#42d5f6ff', r: 2 }}
+                                        activeDot={{ r: 7 }}
+                                        name="Degiro"
+                                    />
+                                    <Line
+                                        type="monotone"
+                                        dataKey="crypto"
+                                        stroke="#c9d36eff"
+                                        strokeWidth={1.5}
+                                        dot={{ fill: '#D2C1B6', r: 2 }}
+                                        activeDot={{ r: 7 }}
+                                        name="Crypto"
                                     />
                                     <Line
                                         type="monotone"
                                         dataKey="total"
                                         stroke="#D2C1B6"
                                         strokeWidth={1.5}
-                                        dot={{ fill: '#D2C1B6', r: 4 }}
+                                        dot={{ fill: '#D2C1B6', r: 3 }}
                                         activeDot={{ r: 7 }}
                                         name="Total"
                                     />
@@ -107,4 +127,4 @@ function TotalWealthChart({ data, isExpandedTotal, setIsExpandedTotal }) {
     );
 }
 
-export default TotalWealthChart;
+export default InvestmentChart;
