@@ -2,7 +2,7 @@ import { useState } from 'react'
 import EmergencyFundCard from '../components/EmergencyFundCard/EmergencyFundCard'
 import CurrentAndAverageCard from '../components/CurrentAndAverageCard/CurrentAndAverageCard'
 import OverTimeChart from '../components/OverTimeChart/OverTimeChart'
-import TotalWealth from '../components/TotalWealth/TotalWealth'
+import TotalWealth from '../components/TotalWealth/WealthOverview'
 import { useFetchOverviewData } from '../hooks/useFetchOverviewData'
 import '../App.css'
 
