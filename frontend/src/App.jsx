@@ -7,18 +7,6 @@ import './App.css'
 function App() {
   return (
     <Router>
-      <div className='header' >
-        <header className="app-header">
-          <div className="header-logo">
-            <img
-              src="/src/assets/finance_logo.png"
-              alt="My Finance Logo"
-              className="header-logo-image"
-            />
-            <h1>My Finance</h1>
-          </div>
-        </header>
-      </div>
       <Navbar />
       <div className="main-content">
         <Routes>

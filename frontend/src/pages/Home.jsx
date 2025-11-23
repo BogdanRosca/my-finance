@@ -61,63 +61,74 @@ function Home() {
                 {latestData && (
                     <>
                         <div style={{
-                            display: 'flex',
-                            gap: '1rem',
                             maxWidth: '800px',
                             margin: '0 auto 1rem auto',
-                            justifyContent: 'flex-start'
+                            background: 'linear-gradient(135deg, #1a3a52 0%, #234c6a 100%)',
+                            border: '1px solid #456882',
+                            borderRadius: '12px',
+                            padding: '1.5rem'
                         }}>
-                            <div onClick={() => setIsIncomeModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
-                                <CurrentAndAverageCard
-                                    title="Income"
-                                    currentValue={latestData.income}
-                                    averageValue={averageIncome}
-                                    monthName={monthName}
-                                    reverseColors={false}
-                                />
-                                <OverTimeChart
-                                    title= 'Income'
-                                    isOpen={isIncomeModalOpen}
-                                    onClose={() => setIsIncomeModalOpen(false)}
-                                    data={incomeChartData}
-                                    averageExpenses={averageIncome}
-                                    lineColour = '#22be78ff'
-                                />
-                            </div>
-                            <div onClick={() => setIsExpensesModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
-                                <CurrentAndAverageCard
-                                    title="Expenses"
-                                    currentValue={latestData.expenses}
-                                    averageValue={averageExpenses}
-                                    monthName={monthName}
-                                    reverseColors={true}
-                                />
-                                <OverTimeChart
-                                    title= 'Expenses'
-                                    isOpen={isExpensesModalOpen}
-                                    onClose={() => setIsExpensesModalOpen(false)}
-                                    data={expensesChartData}
-                                    averageExpenses={averageExpenses}
-                                    lineColour = '#bf3333ff'
-                                />
+                        
+                        <div className="cash-card-header">
+                            <h3>Last Month Overview</h3>
+                        </div>
+                            <div style={{
+                                display: 'flex',
+                                gap: '1rem',
+                                justifyContent: 'flex-start'
+                            }}>
+                                <div onClick={() => setIsIncomeModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
+                                    <CurrentAndAverageCard
+                                        title="Income"
+                                        currentValue={latestData.income}
+                                        averageValue={averageIncome}
+                                        monthName={monthName}
+                                        reverseColors={false}
+                                    />
+                                    <OverTimeChart
+                                        title= 'Income'
+                                        isOpen={isIncomeModalOpen}
+                                        onClose={() => setIsIncomeModalOpen(false)}
+                                        data={incomeChartData}
+                                        averageExpenses={averageIncome}
+                                        lineColour = '#22be78ff'
+                                    />
+                                </div>
+                                <div onClick={() => setIsExpensesModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
+                                    <CurrentAndAverageCard
+                                        title="Expenses"
+                                        currentValue={latestData.expenses}
+                                        averageValue={averageExpenses}
+                                        monthName={monthName}
+                                        reverseColors={true}
+                                    />
+                                    <OverTimeChart
+                                        title= 'Expenses'
+                                        isOpen={isExpensesModalOpen}
+                                        onClose={() => setIsExpensesModalOpen(false)}
+                                        data={expensesChartData}
+                                        averageExpenses={averageExpenses}
+                                        lineColour = '#bf3333ff'
+                                    />
 
-                            </div>
-                            <div onClick={() => setIsInvestmentModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
-                                <CurrentAndAverageCard
-                                    title="Investments"
-                                    currentValue={latestData.investment}
-                                    averageValue={averageInvestment}s
-                                    monthName={monthName}
-                                    reverseColors={false}
-                                />
-                                <OverTimeChart
-                                    title= 'Investment'
-                                    isOpen={isInvestmentModalOpen}
-                                    onClose={() => setIsInvestmentModalOpen(false)}
-                                    data={investmentChartData}
-                                    averageExpenses={averageInvestment}
-                                    lineColour = '#e4ed7bff'
-                                />
+                                </div>
+                                <div onClick={() => setIsInvestmentModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
+                                    <CurrentAndAverageCard
+                                        title="Investments"
+                                        currentValue={latestData.investment}
+                                        averageValue={averageInvestment}
+                                        monthName={monthName}
+                                        reverseColors={false}
+                                    />
+                                    <OverTimeChart
+                                        title= 'Investment'
+                                        isOpen={isInvestmentModalOpen}
+                                        onClose={() => setIsInvestmentModalOpen(false)}
+                                        data={investmentChartData}
+                                        averageExpenses={averageInvestment}
+                                        lineColour = '#e4ed7bff'
+                                    />
+                                </div>
                             </div>
                         </div>
 
@@ -144,7 +155,7 @@ function Home() {
                                 title="Emergency Fund"
                             />
                             <EmergencyFundCard
-                                currentAmount={latestData.revolut + latestData.kutxa_cash - 2 * averageExpenses}
+                                currentAmount={latestData.revolut + latestData.kutxa_cash -  2 * averageExpenses}
                                 targetAmount={6 * averageExpenses}
                                 title="Peace of Mind Fund"
                             />
