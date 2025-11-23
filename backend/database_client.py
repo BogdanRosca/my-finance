@@ -65,7 +65,7 @@ class DatabaseClient:
         
         cursor = self._connection.cursor()
         try:
-            cursor.execute("SELECT * FROM overview")
+            cursor.execute("SELECT * FROM overview ORDER BY date DESC")
             columns = [desc[0] for desc in cursor.description]
             rows = cursor.fetchall()
             return [dict(zip(columns, row)) for row in rows]

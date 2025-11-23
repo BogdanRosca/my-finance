@@ -2,6 +2,7 @@ import { useState } from 'react'
 import EmergencyFundCard from '../components/EmergencyFundCard/EmergencyFundCard'
 import CurrentAndAverageCard from '../components/CurrentAndAverageCard/CurrentAndAverageCard'
 import OverTimeChart from '../components/OverTimeChart/OverTimeChart'
+import TotalWealth from '../components/TotalWealth/TotalWealth'
 import { useFetchOverviewData } from '../hooks/useFetchOverviewData'
 import '../App.css'
 
@@ -74,6 +75,14 @@ function Home() {
                                     monthName={monthName}
                                     reverseColors={false}
                                 />
+                                <OverTimeChart
+                                    title= 'Income'
+                                    isOpen={isIncomeModalOpen}
+                                    onClose={() => setIsIncomeModalOpen(false)}
+                                    data={incomeChartData}
+                                    averageExpenses={averageIncome}
+                                    lineColour = '#22be78ff'
+                                />
                             </div>
                             <div onClick={() => setIsExpensesModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
                                 <CurrentAndAverageCard
@@ -83,17 +92,45 @@ function Home() {
                                     monthName={monthName}
                                     reverseColors={true}
                                 />
+                                <OverTimeChart
+                                    title= 'Expenses'
+                                    isOpen={isExpensesModalOpen}
+                                    onClose={() => setIsExpensesModalOpen(false)}
+                                    data={expensesChartData}
+                                    averageExpenses={averageExpenses}
+                                    lineColour = '#bf3333ff'
+                                />
+
                             </div>
                             <div onClick={() => setIsInvestmentModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
                                 <CurrentAndAverageCard
                                     title="Investments"
                                     currentValue={latestData.investment}
-                                    averageValue={averageInvestment}
+                                    averageValue={averageInvestment}s
                                     monthName={monthName}
                                     reverseColors={false}
                                 />
+                                <OverTimeChart
+                                    title= 'Investment'
+                                    isOpen={isInvestmentModalOpen}
+                                    onClose={() => setIsInvestmentModalOpen(false)}
+                                    data={investmentChartData}
+                                    averageExpenses={averageInvestment}
+                                    lineColour = '#e4ed7bff'
+                                />
                             </div>
                         </div>
+
+                        <div style={{
+                            maxWidth: '800px',
+                            margin: '0 auto 1rem auto'
+                        }}>
+                            <TotalWealth 
+                                lastMonth={latestData}
+                                historicData={allData}
+                            />
+                        </div>
+
                         <div style={{
                             display: 'flex',
                             gap: '1rem',
@@ -103,11 +140,11 @@ function Home() {
                         }}>
                             <EmergencyFundCard
                                 currentAmount={latestData.kutxa_cash}
-                                targetAmount={3 * averageExpenses}
+                                targetAmount={2 * averageExpenses}
                                 title="Emergency Fund"
                             />
                             <EmergencyFundCard
-                                currentAmount={latestData.revolut + Math.max(0, latestData.kutxa_cash - 3 * averageExpenses)}
+                                currentAmount={latestData.revolut + latestData.kutxa_cash - 2 * averageExpenses}
                                 targetAmount={6 * averageExpenses}
                                 title="Peace of Mind Fund"
                             />
@@ -115,33 +152,6 @@ function Home() {
                     </>
                 )}
             </div>
-
-            <OverTimeChart
-                title= 'Income'
-                isOpen={isIncomeModalOpen}
-                onClose={() => setIsIncomeModalOpen(false)}
-                data={incomeChartData}
-                averageExpenses={averageIncome}
-                lineColour = '#22be78ff'
-            />
-
-            <OverTimeChart
-                title= 'Expenses'
-                isOpen={isExpensesModalOpen}
-                onClose={() => setIsExpensesModalOpen(false)}
-                data={expensesChartData}
-                averageExpenses={averageExpenses}
-                lineColour = '#bf3333ff'
-            />
-
-            <OverTimeChart
-                title= 'Investment'
-                isOpen={isInvestmentModalOpen}
-                onClose={() => setIsInvestmentModalOpen(false)}
-                data={investmentChartData}
-                averageExpenses={averageInvestment}
-                lineColour = '#e4ed7bff'
-            />
         </main>
     )
 }

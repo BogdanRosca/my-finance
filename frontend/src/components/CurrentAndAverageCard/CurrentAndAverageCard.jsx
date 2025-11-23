@@ -42,7 +42,7 @@ const CurrentAndAverageCard = ({ title, currentValue, averageValue, monthName = 
 
                 {!isEqual && (
                     <div className="difference" style={{ color: color }}>
-                        {sign}{difference}€
+                        {difference > 0 ? '▲' : '▼'} {sign}{difference}€
                     </div>
                 )}
             </div>

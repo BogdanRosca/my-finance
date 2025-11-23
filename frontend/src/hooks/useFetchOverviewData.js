@@ -32,13 +32,11 @@ export function useFetchOverviewData() {
                     setAverageInvestment(Math.round(totalInvestment / data.length))
                 }
 
-                // Sort by date descending and take the first one
-                const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date))
-                if (sortedData.length > 0) {
-                    setLatestData(sortedData[0])
+                if (data.length > 0) {
+                    setLatestData(data[0])
 
                     // Extract month name from date
-                    const date = new Date(sortedData[0].date)
+                    const date = new Date(data[0].date)
                     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
                         'July', 'August', 'September', 'October', 'November', 'December']
                     setMonthName(monthNames[date.getMonth()])
