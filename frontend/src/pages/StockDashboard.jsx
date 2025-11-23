@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import StockChart from '../components/StockChart'
+import StockChart from '../components/StockChart/StockChart'
 import '../App.css'
 
 function StockDashboard() {
