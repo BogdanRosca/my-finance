@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Menu, MenuItem } from 'react-pro-sidebar';
-import { Home, ChartLine, Settings2, Menu as MenuIcon } from 'lucide-react';
+import { Home, ArrowLeft, ChartLine, Settings2, Menu as MenuIcon } from 'lucide-react';
 import './Navbar.css';
 
 export default function SideNavBar() {
@@ -25,6 +25,13 @@ export default function SideNavBar() {
           <MenuItem icon={<Settings2 size={20} />}>Settings</MenuItem>
         </Menu>
       </div>
+      <button 
+        className={`navbar-toggle-button ${collapsed ? 'collapsed' : ''}`}
+        onClick={() => setCollapsed(!collapsed)}
+        aria-label="Toggle sidebar"
+      >
+        <ArrowLeft size={20} />
+      </button>
     </div>
   );
 }

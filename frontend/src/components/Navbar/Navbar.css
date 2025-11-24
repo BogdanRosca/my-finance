@@ -3,6 +3,7 @@
   height: 100vh;
   background-color: transparent;
   border-right: 1px solid #b3b3b3;
+  position: relative;
 }
 
 .navbar-wrapper {
@@ -12,6 +13,37 @@
   width: 250px;
   transition: width 0.3s;
   background-color: transparent;
+}
+
+.navbar-toggle-button {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  border: 1px solid #b3b3b3;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0;
+}
+
+.navbar-container:hover .navbar-toggle-button {
+  opacity: 1;
+}
+
+.navbar-toggle-button:hover {
+  background-color: #f0f0f0;
+}
+
+.navbar-toggle-button.collapsed {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .navbar-wrapper.collapsed {
