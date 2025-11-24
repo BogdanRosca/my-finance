@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, MenuItem } from 'react-pro-sidebar';
 import { Home, ArrowLeft, ChartLine, Settings2, Menu as MenuIcon } from 'lucide-react';
 import './Navbar.css';
@@ -17,8 +18,8 @@ export default function SideNavBar() {
               <span>My Finance</span>
             </MenuItem>
 
-            <MenuItem icon={<Home size={20} />}>Overview</MenuItem>
-            <MenuItem icon={<ChartLine size={20} />}>Stocks</MenuItem>
+            <MenuItem icon={<Home size={20} />} component={<Link to="/" />}>Overview</MenuItem>
+            <MenuItem icon={<ChartLine size={20} />} component={<Link to="/stock" />}>Stocks</MenuItem>
           </Menu>
         
         <Menu className="navbar-bottom-menu">

@@ -12,7 +12,7 @@ function App() {
         <div className="main-content" style={{ flex: 1, overflowY: 'auto' }}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/stock-dashboard" element={<StockDashboard />} />
+            <Route path="/stock" element={<StockDashboard />} />
           </Routes>
         </div>
       </div>
