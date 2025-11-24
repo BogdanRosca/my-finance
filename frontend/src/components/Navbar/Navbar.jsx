@@ -1,46 +1,30 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Menu, MenuItem } from 'react-pro-sidebar';
+import { Home, ChartLine, Settings2, Menu as MenuIcon } from 'lucide-react';
 import './Navbar.css';
 
-const Navbar = () => {
-    const [collapsed, setCollapsed] = useState(false);
-    const location = useLocation();
+export default function SideNavBar() {
+  const [collapsed, setCollapsed] = useState(false);
 
-    const toggleNavbar = () => {
-        setCollapsed(!collapsed);
-    };
+  return (
+    <div className="navbar-container">
+      <div className={`navbar-wrapper ${collapsed ? 'collapsed' : ''}`}>
+          <Menu className="navbar-main-menu">
+            <MenuItem
+              onClick={() => setCollapsed(!collapsed)}
+              icon={<MenuIcon size={20} />}
+            >
+              <span>My Finance</span>
+            </MenuItem>
 
-    const isActive = (path) => {
-        return location.pathname === path;
-    };
-
-    return (
-        <>
-            <div className={`navbar ${collapsed ? 'collapsed' : ''} `}>
-                <nav className="navbar-menu">
-                    <Link
-                        to="/"
-                        className={`nav - item ${isActive('/') ? 'active' : ''} `}
-                    >
-                        <span className="nav-icon">🏠</span>
-                        {!collapsed && <span className="nav-text">Home</span>}
-                    </Link>
-
-                    <Link
-                        to="/stock-dashboard"
-                        className={`nav - item ${isActive('/stock-dashboard') ? 'active' : ''} `}
-                    >
-                        <span className="nav-icon">📈</span>
-                        {!collapsed && <span className="nav-text">Stocks</span>}
-                    </Link>
-                </nav>
-
-                <button className="toggle-btn" onClick={toggleNavbar}>
-                    {collapsed ? '→' : '←'}
-                </button>
-            </div>
-        </>
-    );
-};
-
-export default Navbar;
+            <MenuItem icon={<Home size={20} />}>Overview</MenuItem>
+            <MenuItem icon={<ChartLine size={20} />}>Stocks</MenuItem>
+          </Menu>
+        
+        <Menu className="navbar-bottom-menu">
+          <MenuItem icon={<Settings2 size={20} />}>Settings</MenuItem>
+        </Menu>
+      </div>
+    </div>
+  );
+}
