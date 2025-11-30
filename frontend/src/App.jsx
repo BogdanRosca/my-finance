@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
+import Kutxa from './pages/Kutxa'
 import StockDashboard from './pages/StockDashboard'
 import SideNavBar from './components/SideNavBar/SideNavBar'
 import './App.css'
@@ -12,6 +13,7 @@ function App() {
         <div className="main-content" style={{ flex: 1, overflowY: 'auto' }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/kutxa" element={<Kutxa />} />
             <Route path="/stock" element={<StockDashboard />} />
           </Routes>
         </div>

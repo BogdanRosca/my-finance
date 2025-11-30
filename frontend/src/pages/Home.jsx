@@ -83,6 +83,7 @@ function Home() {
                                 <div onClick={() => setIsIncomeModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
                                     <CurrentAndAverageCard
                                         title="Income"
+                                        subTitle="Average"
                                         currentValue={latestData.income}
                                         averageValue={averageIncome}
                                         monthName={monthName}
@@ -100,6 +101,7 @@ function Home() {
                                 <div onClick={() => setIsExpensesModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
                                     <CurrentAndAverageCard
                                         title="Expenses"
+                                        subTitle="Average"
                                         currentValue={latestData.expenses}
                                         averageValue={averageExpenses}
                                         monthName={monthName}
@@ -118,6 +120,7 @@ function Home() {
                                 <div onClick={() => setIsInvestmentModalOpen(true)} style={{ cursor: 'pointer', flex: 1 }}>
                                     <CurrentAndAverageCard
                                         title="Investments"
+                                        subTitle="Average"
                                         currentValue={latestData.investment}
                                         averageValue={averageInvestment}
                                         monthName={monthName}

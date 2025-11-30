@@ -62,9 +62,9 @@ export default function SideNavBar() {
             </MenuItem>
 
             <MenuItem icon={<Home size={20} />} component={<Link to="/" />}>Overview</MenuItem>
-            <MenuItem icon={<Landmark size={20} />} component={<Link to="/stock" />}>Kutxa</MenuItem>
-            <MenuItem icon={<ChartLine size={20} />} component={<Link to="/stock" />}>Degiro</MenuItem>
-            <MenuItem icon={<CreditCard size={20} />} component={<Link to="/stock" />}>Revolut</MenuItem>
+            <MenuItem icon={<Landmark size={20} />} component={<Link to="/kutxa" />}>Kutxa</MenuItem>
+            <MenuItem icon={<ChartLine size={20} />} component={<Link to="/degiro" />}>Degiro</MenuItem>
+            <MenuItem icon={<CreditCard size={20} />} component={<Link to="/revolut" />}>Revolut</MenuItem>
           </Menu>
         
         <Menu className="navbar-bottom-menu">
