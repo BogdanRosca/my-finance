@@ -1,5 +1,5 @@
 """
-Health check endpoints
+Endpoints for retrieving and updating user settings.
 """
 from fastapi import APIRouter, HTTPException
 from database_client import DatabaseClient
