@@ -112,7 +112,7 @@ class DatabaseClient:
             return self.get_user_settings(user_id)
         
         params.append(user_id)
-        query = f"UPDATE user_settings SET {', '.join(update_fields)} WHERE id = %s RETURNING id, name, emergency_budget, peace_of_mind_budget"
+        query = "UPDATE user_settings SET " + ", ".join(update_fields) + " WHERE id = %s RETURNING id, name, emergency_budget, peace_of_mind_budget"
         
         cursor = self._connection.cursor()
         try:
