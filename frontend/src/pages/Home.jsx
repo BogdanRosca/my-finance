@@ -4,10 +4,12 @@ import CurrentAndAverageCard from '../components/CurrentAndAverageCard/CurrentAn
 import OverTimeChart from '../components/OverTimeChart/OverTimeChart'
 import TotalWealth from '../components/TotalWealth/WealthOverview'
 import { useFetchOverviewData } from '../hooks/useFetchOverviewData'
+import { useFetchUserSettings } from '../hooks/useFetchUserSettings'
 import '../App.css'
 
 function Home() {
     const { latestData, averageIncome, averageExpenses, averageInvestment, monthName, loading, error, allData } = useFetchOverviewData()
+    const { emergencyBudget, peaceOfMindBudget, loading: settingsLoading, error: settingsError } = useFetchUserSettings(1)
     const [isIncomeModalOpen, setIsIncomeModalOpen] = useState(false)
     const [isExpensesModalOpen, setIsExpensesModalOpen] = useState(false)
     const [isInvestmentModalOpen, setIsInvestmentModalOpen] = useState(false)
@@ -55,8 +57,9 @@ function Home() {
         <main className="app-main" style={{ textAlign: 'center' }}>
 
             <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
-                {loading && <p>Loading latest data...</p>}
+                {(loading || settingsLoading) && <p>Loading latest data...</p>}
                 {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+                {settingsError && <p style={{ color: 'red' }}>Settings Error: {settingsError}</p>}
 
                 {latestData && (
                     <>
@@ -151,12 +154,12 @@ function Home() {
                         }}>
                             <EmergencyFundCard
                                 currentAmount={latestData.kutxa_cash}
-                                targetAmount={2 * averageExpenses}
+                                targetAmount={emergencyBudget * averageExpenses}
                                 title="Emergency Fund"
                             />
                             <EmergencyFundCard
                                 currentAmount={latestData.revolut + latestData.kutxa_cash -  2 * averageExpenses}
-                                targetAmount={6 * averageExpenses}
+                                targetAmount={peaceOfMindBudget * averageExpenses}
                                 title="Peace of Mind Fund"
                             />
                         </div>
