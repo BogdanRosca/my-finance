@@ -12,7 +12,7 @@ import {
   X 
 } from 'lucide-react';
 import SplitButton from '../Buttons/SplitButton';
-import './Navbar.css';
+import './SideNavBar.css';
 
 export default function SideNavBar() {
   const [collapsed, setCollapsed] = useState(false);
