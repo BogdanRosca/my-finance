@@ -9,7 +9,7 @@ export const useFetchUserSettings = (userId = 1) => {
         const fetchUserSettings = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(`http://0.0.0.0:8000/user-settings?id=${userId}`);
+                const response = await fetch(`/api/user-settings?id=${userId}`);
                 
                 if (!response.ok) {
                     throw new Error(`Failed to fetch user settings: ${response.statusText}`);
