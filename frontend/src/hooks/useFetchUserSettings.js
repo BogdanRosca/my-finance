@@ -34,6 +34,6 @@ export const useFetchUserSettings = (userId = 1) => {
         loading, 
         error,
         emergencyBudget: userSettings?.emergency_budget || 0,
-        peaceOfMindBudget: userSettings?.pace_of_mind_budget || 0
+        peaceOfMindBudget: userSettings?.peace_of_mind_budget || 0
     };
 };
