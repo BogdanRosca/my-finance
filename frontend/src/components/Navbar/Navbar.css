@@ -60,3 +60,52 @@
 .navbar-bottom-menu {
   margin-top: auto;
 }
+
+.settings-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 300px;
+  background-color: #456882;
+  border: 1px solid #C4A484;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+  overflow: hidden;
+}
+
+.settings-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #C4A484;
+}
+
+.settings-popup-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #D2C1B6;
+}
+
+.settings-close-btn {
+  background: transparent;
+  border: none;
+  color: #D2C1B6;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.settings-close-btn:hover {
+  background-color: rgba(184, 124, 76, 0.1);
+}
+
+.settings-popup-content {
+  padding: 20px;
+  color: #D2C1B6;
+}
