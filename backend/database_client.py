@@ -71,3 +71,20 @@ class DatabaseClient:
             return [dict(zip(columns, row)) for row in rows]
         finally:
             cursor.close()
+
+    def get_user_settings(self, user_id: int) -> Optional[Dict[str, Any]]:
+        """Get user settings from the database for a specific user"""
+        if not self.is_connected():
+            raise Exception("Not connected to database")
+        
+        cursor = self._connection.cursor()
+        try:
+            cursor.execute(
+                "SELECT id, name, emergency_budget, pace_of_mind_budget FROM user_settings WHERE id = %s",
+                (user_id,)
+            )
+            columns = [desc[0] for desc in cursor.description]
+            row = cursor.fetchone()
+            return dict(zip(columns, row)) if row else None
+        finally:
+            cursor.close()
