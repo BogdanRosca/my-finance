@@ -52,7 +52,7 @@ function Home() {
         });
 
     return (
-        <main className="app-main" style={{ textAlign: 'center'}}>
+        <main className="app-main" style={{ textAlign: 'center' }}>
 
             <div style={{ marginTop: '2rem', marginBottom: '2rem' }}>
                 {loading && <p>Loading latest data...</p>}
