@@ -1,0 +1,52 @@
+.currentAndAverageCard {
+    border: 1px solid #456882;
+    border-radius: 8px;
+    padding: 1rem;
+    flex: 1;
+    min-width: 150px;
+    text-align: left;
+    background-color: #234C6A;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.currentAndAverageCard h4 {
+    margin: 0 0 0.5rem 0;
+    color: #D2C1B6;
+    font-size: 1rem;
+}
+
+.currentAndAverageCard .label {
+    font-size: 0.9rem;
+    color: rgba(210, 193, 182, 0.7);
+    margin-bottom: 0.25rem;
+}
+
+.currentAndAverageCard .currentValue {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #D2C1B6;
+    margin-bottom: 0.75rem;
+}
+
+.currentAndAverageCard .averageValue {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgba(210, 193, 182, 0.9);
+    margin-bottom: 0.5rem;
+}
+
+.currentAndAverageCard .difference {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.rentability-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.rentability-section {
+    flex: 1;
+}

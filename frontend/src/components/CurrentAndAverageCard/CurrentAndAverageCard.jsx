@@ -1,6 +1,6 @@
 import './CurrentAndAverageCard.css';
 
-const CurrentAndAverageCard = ({ title, currentValue, averageValue, monthName = 'Latest Month', reverseColors = false }) => {
+const CurrentAndAverageCard = ({ title, subTitle, currentValue, averageValue, monthName = 'Latest Month', reverseColors = false }) => {
     const difference = currentValue - averageValue;
     const isHigher = currentValue > averageValue;
     const isEqual = currentValue === averageValue;
@@ -34,7 +34,7 @@ const CurrentAndAverageCard = ({ title, currentValue, averageValue, monthName = 
                 </div>
 
                 <div className="label">
-                    Average
+                    {subTitle}
                 </div>
                 <div className="averageValue">
                     €{typeof averageValue === 'number' ? averageValue.toLocaleString() : averageValue}
